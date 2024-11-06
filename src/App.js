@@ -1,10 +1,17 @@
-import React from "react";
+import { useContext, useEffect } from "react";
 import NavBar from "./components/NavBar";
+import navBarContext from "./context/navBar";
 
 function App() {
+  const { fetchNavBarItems, navBarItems } = useContext(navBarContext);
+
+  useEffect(() => {
+    fetchNavBarItems();
+  }, []);
+
   return (
     <div>
-      <NavBar />
+      <NavBar navBarItems={navBarItems} />
     </div>
   );
 }
